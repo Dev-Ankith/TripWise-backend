@@ -28,11 +28,11 @@ The backend configuration is in `Backend/src/main/resources/application.properti
 
 ## 4. Deploying to Render
 
-The repository-root `render.yaml` defines a Docker web service and a managed PostgreSQL database:
+The backend repository's top-level `render.yaml` defines a Docker web service and a managed PostgreSQL database:
 
 1. Push the project to a GitHub repository.
 2. In Render, choose **New + → Blueprint** and select the repository containing `render.yaml`.
-3. Review and apply the Blueprint. Render builds the backend from `Backend/Dockerfile`, provisions PostgreSQL, and connects the service using its internal host and credentials.
+3. Review and apply the Blueprint. Render builds the backend from the repository's `Dockerfile`, provisions PostgreSQL, and connects the service using its internal host and credentials.
 4. After deployment, set `FRONTEND_ORIGIN` in the `tripwise-backend` service environment to the exact public origin of your frontend (for example, `https://your-frontend.onrender.com`), then redeploy.
 5. If deploying the frontend separately, set its `VITE_API_BASE_URL` to `https://<your-backend>.onrender.com/api` and rebuild it.
 
