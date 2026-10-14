@@ -1,0 +1,400 @@
+{
+  "info": {
+    "name": "TripWise Backend API Collection",
+    "description": "Comprehensive Postman Collection for TripWise — Smart and Transparent Travel Planning Platform Spring Boot Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Destinations",
+      "item": [
+        {
+          "name": "1. Get All Destinations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinations",
+              "host": ["{{baseUrl}}"],
+              "path": ["destinations"]
+            }
+          }
+        },
+        {
+          "name": "2. Get Destination By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinations/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["destinations", "1"]
+            }
+          }
+        },
+        {
+          "name": "3. Search Destinations By Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinations/search?name=Goa",
+              "host": ["{{baseUrl}}"],
+              "path": ["destinations", "search"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Goa"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. Create Destination",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rishikesh, Uttarakhand\",\n  \"state\": \"Uttarakhand\",\n  \"description\": \"The Yoga capital of the world offering thrilling white-water river rafting on the Ganges.\",\n  \"imageUrl\": \"https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80\",\n  \"estimatedStartingCost\": 11000.00,\n  \"travelCategory\": \"Adventure\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/destinations",
+              "host": ["{{baseUrl}}"],
+              "path": ["destinations"]
+            }
+          }
+        },
+        {
+          "name": "5. Update Destination",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Goa (North & South Coastal)\",\n  \"state\": \"Goa\",\n  \"description\": \"Sun-kissed beaches, coastal spice farms, and water sports.\",\n  \"imageUrl\": \"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1000&q=80\",\n  \"estimatedStartingCost\": 16500.00,\n  \"travelCategory\": \"Beaches\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/destinations/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["destinations", "1"]
+            }
+          }
+        },
+        {
+          "name": "6. Delete Destination",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/destinations/6",
+              "host": ["{{baseUrl}}"],
+              "path": ["destinations", "6"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Travel Services",
+      "item": [
+        {
+          "name": "1. Get All Services",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services",
+              "host": ["{{baseUrl}}"],
+              "path": ["services"]
+            }
+          }
+        },
+        {
+          "name": "2. Get Service By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "1"]
+            }
+          }
+        },
+        {
+          "name": "3. Get Services By Destination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services/destination/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "destination", "1"]
+            }
+          }
+        },
+        {
+          "name": "4. Get Services By Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services/category/accommodation",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "category", "accommodation"]
+            }
+          }
+        },
+        {
+          "name": "5. Create Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Anjuna Sunset Kayaking Tour\",\n  \"category\": \"activities\",\n  \"destinationId\": 1,\n  \"description\": \"Guided ocean kayaking with life jacket and sunset photography.\",\n  \"providerName\": \"Goa Ocean Sports\",\n  \"price\": 1200.00,\n  \"rating\": 4.8,\n  \"contactDetails\": \"+91 98221 99999\",\n  \"availabilityStatus\": \"AVAILABLE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/services",
+              "host": ["{{baseUrl}}"],
+              "path": ["services"]
+            }
+          }
+        },
+        {
+          "name": "6. Update Service",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Santana Beach Resort Candolim (Upgraded Pool View)\",\n  \"category\": \"accommodation\",\n  \"destinationId\": 1,\n  \"description\": \"Upgraded deluxe pool view room with breakfast.\",\n  \"providerName\": \"Santana Beach Resort\",\n  \"price\": 4200.00,\n  \"rating\": 4.8,\n  \"contactDetails\": \"+91 832 2494000\",\n  \"availabilityStatus\": \"AVAILABLE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/services/3",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "3"]
+            }
+          }
+        },
+        {
+          "name": "7. Delete Service",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/services/38",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "38"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trips and Itinerary",
+      "item": [
+        {
+          "name": "1. Create Trip",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tripName\": \"Goa Coastal Escapade\",\n  \"destinationId\": 1,\n  \"startDate\": \"2026-11-15\",\n  \"endDate\": \"2026-11-20\",\n  \"numberOfTravelers\": 2,\n  \"budget\": 35000.00,\n  \"interests\": \"Beaches, Adventure, Seafood\",\n  \"status\": \"PLANNED\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/trips",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips"]
+            }
+          }
+        },
+        {
+          "name": "2. Get All Trips",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trips",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips"]
+            }
+          }
+        },
+        {
+          "name": "3. Get Trip By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trips/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1"]
+            }
+          }
+        },
+        {
+          "name": "4. Update Trip",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tripName\": \"Goa Coastal Escapade (Updated Budget)\",\n  \"destinationId\": 1,\n  \"startDate\": \"2026-11-15\",\n  \"endDate\": \"2026-11-20\",\n  \"numberOfTravelers\": 2,\n  \"budget\": 40000.00,\n  \"interests\": \"Beaches, Adventure, Seafood, Heritage\",\n  \"status\": \"PLANNED\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/trips/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1"]
+            }
+          }
+        },
+        {
+          "name": "5. Delete Trip",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trips/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trip Items",
+      "item": [
+        {
+          "name": "1. Add Service Item to Trip",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceId\": 7,\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/trips/1/items",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1", "items"]
+            }
+          }
+        },
+        {
+          "name": "2. Get Trip Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trips/1/items",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1", "items"]
+            }
+          }
+        },
+        {
+          "name": "3. Remove Item from Trip",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trips/1/items/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1", "items", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Budget & Cost Summary",
+      "item": [
+        {
+          "name": "1. Get Trip Budget Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trips/1/budget",
+              "host": ["{{baseUrl}}"],
+              "path": ["trips", "1", "budget"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Package Comparison",
+      "item": [
+        {
+          "name": "1. Compare Package Against Itinerary",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"packageName\": \"Standard Commercial Goa Explorer 4N/5D\",\n  \"destination\": \"Goa\",\n  \"packagePrice\": 32000.00,\n  \"tripId\": 1,\n  \"includedServices\": [\n    \"Direct Flight to Goa\",\n    \"Santana Beach Resort Candolim\",\n    \"Scuba Diving & Grand Island Boat Cruise\",\n    \"All meals & private AC coach\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/packages/compare",
+              "host": ["{{baseUrl}}"],
+              "path": ["packages", "compare"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
